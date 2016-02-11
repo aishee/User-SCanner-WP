@@ -43,12 +43,13 @@ for x in range(1, numU):
     sout("[+]: %"+str(prec)+"Done       ")
     try:
         s = curllib(site, '', urllib.urlencode({"author":x}))
+        u = []
+        u.append(s.split('<meta property="og:title" content="')[1].split(', ')[0])
+        u.append(s.split('<meta property="og:url" content="'+site+'author/')[1].split('/"')[0])
+        users.append(u)
     except:
-        0
-    u = []
-    u.append(s.split('<meta property="og:title" content="')[1].split(', ')[0])
-    u.append(s.split('<meta property="og:url" content="'+site+'author/')[1].split('/"')[0])
-    users.append(u)
+        pass
+
 print("[+]: %100 Done   ")
 allusers = sort_and_deduplicate(users)
 
